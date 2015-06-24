@@ -1,0 +1,340 @@
+
+
+<html>
+
+    <head>
+        <style type="text/css">
+        body{
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+        }
+        h2{
+            text-align: center;
+            
+        }
+        span{
+            color: red;
+        }
+        .container{
+            margin: 0 auto;
+            width: 990px;
+        }
+        .info_area{
+            float: left;
+            height: 205px;
+            width: 215px;
+            margin-left: 10px;
+            padding-left: 10px;
+            border: 1px solid grey;
+        }
+        .input_container{
+            padding-left: 15px;
+            height: 260px;
+            min-width: 940px;
+            background-color:#f1f1f1;
+        }
+        .other_container{
+            padding-left: 15px;
+            height: 260px;
+            min-width: 940px;
+            background-color:#f1f1f1;
+
+        }
+        .clear{
+            clear: all;
+            float: none;
+        }
+        .inputBox{
+        	width: 120px;
+        }
+        .short_inbox{
+            width: 70px;
+        }
+
+        </style>
+        <title>OpenWB Status and Config!</title>
+        <script type="text/javascript" src="parser.js"></script>
+    </head>
+
+    <body>
+
+    <div class="container">
+    <h1 id="datebox"></h1>
+
+    <!--**********************************INPUTS***********************************************-->
+
+        <div class="input_container">
+        <h2>INPUTS</h2>
+            <div class="info_area">
+                <form>
+                    <table>
+                        <tbody>
+                             <h4>Temp sensor boiler!</h4>
+                            <tr>
+                                <td>Enabled:</td>
+                                <td><input id="tb_enabled" type="checkbox" name="tb_enabled" value="true"></td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td><input class="inputBox" id="tb_type" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>Base dir:</td>
+                                <td><input class="inputBox" id="tb_base_dir" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>Filename:</td>
+                                <td><input class="inputBox" id="tb_filename" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>ID:</td>
+                                <td><input class="inputBox" id="tb_id" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>GPIO:</td>
+                                <td><input class="inputBox" id="tb_gpio" type="number"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+                <div class="info_area">
+                    <form>
+                        <table>
+                            <tbody>
+                                 <h4>Temp sensor tank!</h4>
+                                <tr>
+                                    <td>Enabled:</td>
+                                <td><input type="checkbox" name="tt_enabled" value="true"></td>
+                                </tr>
+                                <tr>
+                                    <td>Type:</td>
+                                    <td><input class="inputBox" id="tt_type" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Base dir:</td>
+                                    <td><input class="inputBox" id="tt_base_dir" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Filename:</td>
+                                    <td><input class="inputBox" id="tt_filename" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>ID:</td>
+                                    <td><input class="inputBox" id="tt_id" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>GPIO:</td>
+                                    <td><input class="inputBox" id="tt_gpio" type="number"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                    <div class="info_area">
+                    <form>
+                    <table>
+                        <tbody>
+                             <h4>Temp sensor fire!</h4>
+                            <tr>
+                                <td>Enabled:</td>
+                                <td><input type="checkbox" name="tf_enabled" value="true"></td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td><input class="inputBox" id="tf_type" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>Base dir:</td>
+                                <td><input class="inputBox" id="tf_base_dir" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>Filename:</td>
+                                <td><input class="inputBox" id="tf_filename" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>ID:</td>
+                                <td><input class="inputBox" id="tf_id" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>GPIO:</td>
+                                <td><input class="inputBox" id="tf_gpio" type="number"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </form>
+                </div>
+                <div class="info_area">
+                    <form>
+                        <table>
+                            <tbody>
+                                 <h4>Control button GPIO</h4>
+                                <tr>
+                                    <td>Auto/Man:</td>
+                                    <td><input class="inputBox" id="cb_auto_man_gpio" type="number"></td>
+                                </tr>
+                                <tr>
+                                    <td>Man screw:</td>
+                                    <td><input class="inputBox" id="cb_man_screw_gpio" type="number"></td>
+                                </tr>
+                                <tr>
+                                    <td>Man fan:</td>
+                                    <td><input class="inputBox" id="cb_man_fan_gpio" type="number"></td>
+                                </tr>                                
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+
+            </div>
+            <div class="clear"></div>
+
+                <!--**********************************DIV VALUES*****************************************-->
+        
+            
+            
+             <div class="input_container">
+             <h2>DIV VALUE</h2>
+            <div class="info_area">
+                <form>
+                    <table>
+                        <tbody>
+                             <h4>Timers (<span>S</span>)</h4>
+                            <tr>
+                                <td>Block time:</td>
+                                <td><input class="short_inbox" id="block_time" type="number"></td>
+                            </tr>
+                            <tr>
+                                <td>Block time idle:</td>
+                                <td><input class="short_inbox" id="block_time_idle" type="number"></td>
+                            </tr>  
+                            <tr>
+                                <td>Runtime fan idle:</td>
+                                <td><input class="short_inbox" id="run_time_fan_idle" type="number"></td>
+                            </tr>  
+                            <tr>
+                                <td>Runtime screw:</td>
+                                <td><input class="short_inbox" id="run_time_screw" type="number"></td>
+                            </tr>  
+                            <tr>
+                                <td>Runtime screw idle:</td>
+                                <td><input class="short_inbox" id="run_time_screw_idle" type="number"></td>
+                            </tr>  
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="info_area">
+                <form>
+                    <table>
+                        <tbody>
+                             <h4>Temp limits (<span>C&deg;</span>)</h4>
+                            <tr>
+                                <td>Min temp:</td>
+                                <td><input class="short_inbox" id="min_temp_value" type="number"></td>
+                            </tr>
+                            <tr>
+                                <td>Min temp idle:</td>
+                                <td><input class="short_inbox" id="idle_min_temp_value" type="number"></td>
+                            </tr>   
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="info_area">
+                <form>
+                    <table>
+                        <tbody>
+                             <h4>Database</h4>
+                                <tr>
+                                 <td>Enabled:</td>
+                                <td><input type="checkbox" name="db_enabled" value="true"></td>
+                                </tr>
+                                <tr>
+                                    <td>Type:</td>
+                                    <td><input class="inputBox" id="db_type" type="text"></td>
+                                </tr>  
+                                <tr>
+                                    <td>Name:</td>
+                                    <td><input class="inputBox" id="db_name" type="text"></td>
+                                </tr>  
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="info_area">
+                <form>
+                    <table>
+                        <tbody>
+                             <h4>Log files!</h4>
+                                <tr>
+                                    <td>Enabled:</td>
+                                <td><input type="checkbox" name="log_enabled" value="true"></td>
+                                </tr>
+                                <tr>
+                                    <td>Base dir:</td>
+                                    <td><input class="inputBox" id="log_base_dir" type="text"></td>
+                                </tr>  
+                                <tr>
+                                    <td>File name:</td>
+                                    <td><input class="inputBox" id="log_file_name" type="text"></td>
+                                </tr>  
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+                <!--**********************************OUTPUTS********************************************-->
+
+        <div class="input_container">
+        <h2>OUTPUTS</h2>
+            <div class="info_area">
+                <form>
+                    <table>
+                        <tbody>
+                             <h4>Fan!</h4>
+                            <tr>
+                                <td>Enabled:</td>
+                                <td><input type="checkbox" name="fan_enabled" value="true"></td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td><input class="inputBox" id="fan_type" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>GPIO:</td>
+                                <td><input class="inputBox" id="fan_gpio" type="number"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="info_area">
+                <form>
+                    <table>
+                        <tbody>
+                             <h4>Screw!</h4>
+                            <tr>
+                                <td>Enabled:</td>
+                                <td><input type="checkbox" name="screw_enabled" value="true"></td>
+                            </tr>
+                            <tr>
+                                <td>Type:</td>
+                                <td><input class="inputBox" id="screw_type" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td>GPIO:</td>
+                                <td><input class="inputBox" id="screw_gpio" type="number"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            </div>
+            <div class="clear"></div>
+
+        </div>
+    </body>
+</html>
