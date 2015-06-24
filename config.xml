@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<ECU>
+    <info>
+        <hw_name>openWB_viktor_edition</hw_name>
+        <ip>127.5.0.2</ip>
+    </info>
+    <!--**********INPUT SENSORS******-->
+    <boiler_temp_sensor>
+        <enabled>yes</enabled>
+        <type>DS18B20</type>
+        <base_dir>/sys/bus/w1/devices/</base_dir>
+        <file_name>/w1_slave</file_name>
+        <id>28-24234034</id>
+        <gpio>4</gpio>
+    </boiler_temp_sensor>>
+
+    <tank_temp_sensor>
+        <enabled>yes</enabled>
+        <type>DS18B20</type>
+        <base_dir>/sys/bus/w1/devices/</base_dir>
+        <file_name>/w1_slave</file_name>
+        <id>28-242674</id>
+        <gpio>4</gpio>
+    </tank_temp_sensor>
+
+    <fire_temp_sensor>
+        <enabled>yes</enabled>
+        <type>MAX31850</type>
+        <base_dir>/sys/bus/w1/devices/</base_dir>
+        <file_name>/w1_slave</file_name>
+        <id>28-234474</id>
+        <gpio>4</gpio>
+    </fire_temp_sensor>
+
+    <control_button>
+        <auto_man_gpio>23</auto_man_gpio>
+        <man_screw_gpio>24</man_screw_gpio>
+        <man_fan_gpio>25</man_fan_gpio>
+    </control_button>
+    <!--***********TIMERS***********-->
+    <timers>
+        <block_time>260</block_time>
+        <block_time_idle>300</block_time_idle>
+        <run_time_fan_idle>30</run_time_fan_idle>
+        <run_time_screw>10</run_time_screw>
+        <run_time_screw_idle>5</run_time_screw_idle>
+    </timers>
+
+    <!--***********TEMP LIMITS******-->
+    <limits>
+        <min_temp_value>560</min_temp_value>
+        <idle_min_temp_value>200</idle_min_temp_value>
+    </limits>
+
+    <!--***********OUTPUTS*********-->
+    <fan>
+        <enabled>yes</enabled>
+        <type>PWM</type>
+        <gpio>18</gpio>
+    </fan>
+    <screw>
+        <enabled>yes</enabled>
+        <type>relay</type>
+        <gpio>17</gpio>
+    </screw>
+
+    <!--***********DATABSE*********-->
+    <database>
+        <enabled>yes</enabled>
+        <type>SQLite</type>
+        <db_name>data_temp.db</db_name>
+    </database>
+
+    <!--***********LOG*************-->
+    <log>
+        <base_dir>/tmp/</base_dir>
+        <file_name>openWB.log</file_name>
+    </log>
+
+</ECU>
